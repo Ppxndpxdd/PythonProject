@@ -18,7 +18,7 @@ class Stack:
             s += str(ele)+''
         return s
 
-    def push(self,i):
+    def push(self, i):
         self.items.append(i)
 
     def pop(self):
@@ -33,35 +33,36 @@ class Stack:
     def peek(self):
         return self.items[-1]
 
+
 inp = input('Enter Infix : ')
 
 S = Stack()
 
 opdict = {
-    '+':1,
-    '-':1,
-    '*':2,
-    '/':2,
-    '(':3,
-    '^':4
-    }
+    '+': 1,
+    '-': 1,
+    '*': 2,
+    '/': 2,
+    '(': 3,
+    '^': 4
+}
 
 print('Postfix : ', end='')
 for ch in inp:
     if ch.isalpha():
-        print(ch,end="")
+        print(ch, end="")
         continue
-    if ch==')':
+    if ch == ')':
         while S.peek() != '(':
-            print(S.pop(),end="")
+            print(S.pop(), end="")
         S.pop()
 
-    elif not S.isEmpty() and (ch=='(' or opdict[ch] > opdict[S.peek()]) :
+    elif not S.isEmpty() and (ch == '(' or opdict[ch] > opdict[S.peek()]):
         S.push(ch)
 
-    else :
+    else:
         while (not S.isEmpty() and S.peek() != '(') and opdict[ch] <= opdict[S.peek()]:
-            print(S.pop(),end="")
+            print(S.pop(), end="")
         S.push(ch)
 
 while not S.isEmpty():

@@ -18,7 +18,7 @@ class Stack:
             s += str(ele)+''
         return s
 
-    def push(self,i):
+    def push(self, i):
         self.items.append(i)
 
     def pop(self):
@@ -30,15 +30,16 @@ class Stack:
     def size(self):
         return len(self.items)
 
+
 def parenMatching(str):
-    def match(open,close):
+    def match(open, close):
         return (open == '(' and close == ')') or (open == '{' and close == '}' or (open == '[' and close == ']'))
-    
+
     # def match2(op,cl):
     #     opens = "([{"
     #     closes = ")]}"
     #     return opens.index(op) == closes.index(cl)
-    
+
     s = Stack()
     i = 0
     error = 0
@@ -50,26 +51,27 @@ def parenMatching(str):
         else:
             if c in '}])':
                 if s.size() > 0:
-                    if not match(s.pop(),c):
+                    if not match(s.pop(), c):
                         error = 1
-                else :
+                else:
                     error = 2
         i += 1
 
-    if s.size()>0 and error == 0:
+    if s.size() > 0 and error == 0:
         error = 3
-    return error,c,i,s
+    return error, c, i, s
+
 
 str = input("Enter expresion : ")
-err,c,i,s = parenMatching(str)
+err, c, i, s = parenMatching(str)
 if err == 1:
-    print(str,'Unmatch open-close ')
+    print(str, 'Unmatch open-close ')
 elif err == 2:
-    print(str,'close paren excess')
+    print(str, 'close paren excess')
 elif err == 3:
-    print(str, 'open paren excess  ', s.size(),': ',end="")
+    print(str, 'open paren excess  ', s.size(), ': ', end="")
     for ele in s.items:
-        print(ele,sep='',end="")
+        print(ele, sep='', end="")
     print()
 else:
-    print(str,'MATCH')
+    print(str, 'MATCH')

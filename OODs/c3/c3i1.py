@@ -1,27 +1,18 @@
 class Stack:
-
-    """class Stack
-        default : empty stack / Stack([...])
-    """
-    total = 0
-
     def __init__(self, list=None):
         if list == None:
             self.items = []
         else:
             self.items = list
-        self.size = len(self.items)
-        Stack.total += 1
 
     def __str__(self):
-        s = 'stack of'+str(self.size())+'items'
+        s = 'stack of '+str(self.size())+' items '
         for ele in self.items:
-            s += str(ele)+''
+            s += str(ele)+' '
         return s
 
-    def push(self,i):
+    def push(self, i):
         self.items.append(i)
-        self.size += 1
 
     def pop(self):
         return self.items.pop()
@@ -32,9 +23,10 @@ class Stack:
     def size(self):
         return len(self.items)
 
+
 print(" *** Stack implement by Python list***")
 
-ls = [e for e in input("Enter data to stack : ").split()]
+ls = input("Enter data to stack : ").split()
 
 s = Stack()
 
